@@ -1,0 +1,522 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>김귀영 — 경력기술서 · 포트폴리오 (QA)</title>
+</head>
+<body>
+<style>
+  *,*::before,*::after{box-sizing:border-box}
+  body,h1,h2,h3,h4,p,ul,figure{margin:0}
+  ul{padding:0}
+
+  :root{
+    --paper:#F9FAFB; --card:#FFFFFF; --ink:#181C20; --muted:#646E78;
+    --green:#1558B0; --green-soft:#E8F0FA; --red:#C7502F; --red-soft:#F8ECE6;
+    --border:#E2E6EA; --rule:#181C20;
+    --mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+  }
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--paper); color:var(--ink);
+    font-family:"Apple SD Gothic Neo","Pretendard","Noto Sans KR","Malgun Gothic",sans-serif;
+    line-height:1.75; font-size:16px;
+    word-break:keep-all; overflow-wrap:break-word;
+  }
+  p{text-wrap:pretty}
+  .wrap{max-width:880px; margin:0 auto; padding:0 24px}
+  a:focus-visible{outline:2px solid var(--green); outline-offset:3px; border-radius:2px}
+
+  /* ---------- nav ---------- */
+  header.top{
+    position:sticky; top:0; z-index:20; background:rgba(249,250,251,.94);
+    backdrop-filter:blur(8px); border-bottom:1px solid var(--border);
+  }
+  .nav{display:flex; align-items:center; justify-content:space-between; padding-top:13px; padding-bottom:13px}
+  .nav .brand{font-weight:800; letter-spacing:-.01em; font-size:15px}
+  .nav .brand small{font-family:var(--mono); font-weight:400; color:var(--muted); margin-left:8px; font-size:11px; letter-spacing:.08em}
+  .nav ul{display:flex; gap:18px; list-style:none; font-size:13.5px}
+  .nav a{color:var(--muted); text-decoration:none}
+  .nav a:hover,.nav a:focus-visible{color:var(--green)}
+
+  /* ---------- hero ---------- */
+  .hero{padding-top:64px; padding-bottom:44px}
+  .hero .doc-label{font-family:var(--mono); font-size:12px; letter-spacing:.14em; color:var(--green); margin-bottom:18px}
+  .hero .doc-label::before{content:""; display:inline-block; width:26px; height:2px; background:var(--green); vertical-align:middle; margin-right:10px}
+  h1{font-size:clamp(24px,4.5vw,34px); font-weight:800; letter-spacing:-.03em; line-height:1.22; text-wrap:balance}
+  h1 em{font-style:normal; color:var(--green)}
+  h1 .tline{display:flex; align-items:baseline; gap:16px}
+  h1 .tline + .tline{margin-top:8px}
+  h1 .tno{font-family:var(--mono); font-size:.42em; color:var(--green); font-weight:400; letter-spacing:.08em; flex:none; transform:translateY(-.25em)}
+  .hero .who{margin:8px 0 20px; font-size:15px; color:var(--muted)}
+  .hero .who b{color:var(--ink)}
+  .hero p.summary{font-size:15.5px}
+  .hero p.summary + p.summary{margin-top:10px}
+  .ci-label{font-family:var(--mono); font-size:11px; letter-spacing:.12em; color:var(--muted); margin:26px 0 10px}
+  .case-index{display:grid; grid-template-columns:repeat(auto-fit,minmax(210px,1fr)); gap:12px}
+  .ci-card{
+    display:block; text-decoration:none; color:var(--ink);
+    background:var(--card); border:1px solid var(--border); border-radius:10px;
+    padding:16px 18px 14px; transition:border-color .15s, transform .15s;
+  }
+  .ci-card:hover{border-color:var(--green); transform:translateY(-2px)}
+  .ci-card .ci-tag{font-family:var(--mono); font-size:10.5px; letter-spacing:.08em; color:var(--muted); display:block}
+  .ci-card b{font-size:26px; letter-spacing:-.02em; color:var(--green); font-variant-numeric:tabular-nums; display:block; margin:6px 0 4px}
+  .ci-card b em{font-style:normal; font-size:14px; color:var(--muted); font-weight:400}
+  .ci-card .ci-title{font-size:12.5px; color:var(--muted); display:block; line-height:1.5}
+  @media (prefers-reduced-motion:reduce){ .ci-card{transition:none} .ci-card:hover{transform:none} }
+  .case{scroll-margin-top:70px}
+
+  /* before/after bars */
+  .bars-wrap{padding:28px 4px 26px}
+  .bars{display:flex; align-items:flex-end; gap:24px; height:110px}
+  .bar{width:52px; border-radius:5px 5px 0 0; position:relative}
+  .bar span{position:absolute; top:-22px; left:50%; transform:translateX(-50%); font-size:12px; font-family:var(--mono); white-space:nowrap}
+  .bar em{position:absolute; bottom:-24px; left:50%; transform:translateX(-50%); font-size:11px; color:var(--muted); font-style:normal; white-space:nowrap}
+  .bar.before{height:100%; background:var(--red)}
+  .bar.after{height:30%; background:var(--green)}
+
+  /* ---------- sections ---------- */
+  section{padding:56px 0 8px}
+  .sec-head{display:flex; align-items:baseline; gap:14px; border-bottom:2px solid var(--rule); padding-bottom:10px; margin-bottom:8px}
+  .sec-head .no{font-family:var(--mono); font-size:12px; color:var(--muted); letter-spacing:.1em}
+  h2{font-size:22px; font-weight:800; letter-spacing:-.02em}
+  .sec-sub{font-size:14px; color:var(--muted); margin:10px 0 4px; max-width:640px}
+  h3{font-size:16.5px; font-weight:700}
+  p{max-width:680px}
+  .muted{color:var(--muted)}
+  code{font-family:var(--mono); font-size:.86em; background:var(--green-soft); border:1px solid var(--border); border-radius:4px; padding:1px 6px}
+
+  /* strengths */
+  .strengths{display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:0; border-bottom:1px solid var(--border)}
+  .strength{padding:18px 4px 16px; border-bottom:1px solid var(--border); display:flex; gap:14px}
+  .strength:nth-last-child(-n+2){border-bottom:none}
+  .strength .no{font-family:var(--mono); font-size:11px; color:var(--green); padding-top:5px; letter-spacing:.05em}
+  .strength b{display:block; font-size:15px; margin-bottom:3px}
+  .strength span{font-size:13.5px; color:var(--muted); line-height:1.6; display:block}
+  .pr-label{font-family:var(--mono); font-size:11.5px; letter-spacing:.08em; color:var(--green); margin-top:22px}
+  .pr-label span{color:var(--muted); letter-spacing:0}
+
+  /* ---------- career ledger ---------- */
+  .co{margin-top:36px; display:grid; grid-template-columns:150px 1fr; gap:0 28px}
+  @media (max-width:680px){ .co{grid-template-columns:1fr} }
+  .co .when{padding-top:4px}
+  .co .when .period{font-family:var(--mono); font-size:12.5px; color:var(--ink); font-variant-numeric:tabular-nums; display:block}
+  .co .when .len{font-family:var(--mono); font-size:11px; color:var(--muted)}
+  .co .when .status{display:inline-block; margin-top:8px; font-size:11px; font-family:var(--mono); color:var(--green); background:var(--green-soft); border-radius:3px; padding:2px 8px}
+  .co .body{border-left:2px solid var(--rule); padding-left:26px; padding-bottom:26px}
+  @media (max-width:680px){ .co .body{margin-top:10px} }
+  .co .body h3{font-size:19px; letter-spacing:-.02em}
+  .co .body .co-sub{font-size:13px; color:var(--muted); margin-bottom:12px}
+  .duty-chips{display:flex; gap:8px; flex-wrap:wrap; margin:4px 0 12px}
+  .chip{font-size:12.5px; border:1px solid var(--border); background:var(--card); border-radius:99px; padding:3px 12px; color:var(--muted)}
+  .chip.hl{border-color:var(--green); color:var(--green); background:var(--green-soft)}
+  .body ul.duties{padding-left:18px; max-width:660px; font-size:14.5px; margin-top:8px}
+  .body ul.duties li{margin-bottom:5px}
+  .body ul.duties li::marker{color:var(--green)}
+
+  /* case cards */
+  .case{background:var(--card); border:1px solid var(--border); border-radius:10px; padding:26px 30px; margin-top:22px; position:relative}
+  .case::before{content:""; position:absolute; left:-28px; top:34px; width:26px; height:1px; background:var(--border)}
+  .case .tag{
+    font-family:var(--mono); font-size:11.5px; letter-spacing:.06em;
+    color:var(--red); background:var(--red-soft); padding:3px 10px; border-radius:3px; display:inline-block;
+  }
+  .case .tag.g{color:var(--green); background:var(--green-soft)}
+  .case h4{font-size:17.5px; font-weight:700; letter-spacing:-.01em; margin:10px 0 4px}
+  .case .oneliner{color:var(--muted); font-size:14px}
+  .step{margin-top:20px}
+  .step .k{font-family:var(--mono); font-size:11px; letter-spacing:.1em; color:var(--green); display:block; margin-bottom:6px}
+  .step p{font-size:14.5px}
+  .step ul{padding-left:18px; max-width:640px; font-size:14.5px}
+  .step li{margin-bottom:6px}
+  .step li::marker{color:var(--green)}
+  .hypo{display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:10px; margin-top:8px}
+  .hypo div{border:1px solid var(--border); border-radius:8px; padding:11px 14px; font-size:13px; background:var(--paper)}
+  .hypo div b{display:block; font-family:var(--mono); font-size:10.5px; color:var(--muted); margin-bottom:5px; letter-spacing:.05em}
+  .hypo div.hit{border-color:var(--red); background:var(--red-soft)}
+  .hypo div.hit b{color:var(--red)}
+  .result{display:flex; align-items:center; gap:22px; margin-top:22px; border-top:1px dashed var(--border); padding-top:18px; flex-wrap:wrap}
+  .result .big{font-size:38px; font-weight:800; color:var(--green); letter-spacing:-.03em; font-variant-numeric:tabular-nums}
+  .result p{font-size:13.5px; max-width:420px; margin:0}
+  .chart-note{font-size:11px; color:var(--muted); font-family:var(--mono); margin-top:8px}
+
+  /* transition */
+  .qa-block{background:var(--card); border:1px solid var(--border); border-left:3px solid var(--green); border-radius:8px; padding:22px 26px; margin-top:16px; max-width:740px}
+  .qa-block .q{font-weight:700; margin-bottom:10px}
+  .qa-block p{font-size:14.5px; margin-bottom:10px}
+  .qa-block p:last-child{margin-bottom:0}
+
+  /* creds */
+  .creds{display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:14px; margin-top:16px}
+  .cred{background:var(--card); border:1px solid var(--border); border-radius:8px; padding:18px}
+  .cred h4{font-size:12px; font-family:var(--mono); letter-spacing:.08em; color:var(--muted); margin-bottom:10px}
+  .cred ul{list-style:none; font-size:13.5px}
+  .cred li{padding:4px 0; border-bottom:1px dashed var(--border)}
+  .cred li:last-child{border-bottom:none}
+  .cred li small{font-family:var(--mono); color:var(--muted); font-size:11px}
+  .chips{display:flex; flex-wrap:wrap; gap:8px}
+
+  /* footer */
+  footer{border-top:2px solid var(--rule); margin-top:56px; padding:48px 0 72px}
+  footer .big-msg{font-size:22px; font-weight:800; letter-spacing:-.02em; margin-bottom:14px; text-wrap:balance}
+  .contact{display:flex; gap:12px; flex-wrap:wrap; margin-top:18px}
+  .contact a{
+    font-family:var(--mono); font-size:13px; color:var(--green); text-decoration:none;
+    border:1px solid var(--border); background:var(--card); border-radius:99px; padding:8px 18px;
+  }
+  .contact a:hover{border-color:var(--green)}
+  footer .fine{font-size:11px; color:var(--muted); margin-top:32px; font-family:var(--mono)}
+
+  /* ---------- mobile ---------- */
+  @media (max-width:600px){
+    body{font-size:15px}
+    .wrap{padding:0 22px}
+    .nav{flex-wrap:wrap; row-gap:2px}
+    .nav .brand small{display:none}
+    .nav ul{gap:12px; font-size:12.5px}
+    .hero{padding-top:46px; padding-bottom:38px}
+    h1 .tline{gap:10px}
+    h1 .tline + .tline{margin-top:10px}
+    section{padding:46px 0 8px}
+    .co{gap:0}
+    .co .when{padding-bottom:10px}
+    .co .body{padding-left:18px; padding-bottom:22px}
+    .case{padding:24px 20px; margin-top:20px}
+    .case::before{display:none}
+    .step{margin-top:18px}
+    .step p,.step ul,.body ul.duties{font-size:14px}
+    .result{gap:14px; margin-top:20px}
+    .result .big{font-size:30px}
+    .qa-block{padding:20px 18px}
+    footer{padding:38px 0 56px}
+    footer .big-msg{font-size:19px}
+  }
+</style>
+
+<header class="top">
+  <div class="wrap nav">
+    <div class="brand">김귀영<small>CAREER &amp; PORTFOLIO — QA</small></div>
+    <ul>
+      <li><a href="#career">경력</a></li>
+      <li><a href="#transition">전환기</a></li>
+      <li><a href="#creds">자격·스킬</a></li>
+      <li><a href="#contact">연락처</a></li>
+    </ul>
+  </div>
+</header>
+
+<div class="wrap hero">
+  <div class="doc-label">경력기술서 · 포트폴리오 — QA</div>
+  <h1>
+    <span class="tline"><span class="tno">01</span><span>힘을 쏟을 곳을 <em>먼저 고르고</em>, 끝까지 검증합니다.</span></span>
+    <span class="tline"><span class="tno">02</span><span>직군은 달라도, 바라보는 지표는 <em>하나</em>여야 합니다.</span></span>
+  </h1>
+  <div class="who"><b>김귀영</b> — QA 엔지니어 · LG Signage 외주 QA / 핀테크 1인 QA / 대형 이커머스 · 총 IT 경력 5년 10개월</div>
+  <p class="summary">
+    갖춰진 프로세스 안의 외주 검증(LG Signage)부터 0에서 체계를 만든 자사 1인 QA(핀테크)까지 —
+    5년의 검증은 저에게 <b>변수가 모이는 곳과 그렇지 않은 곳을 가려내는 눈</b>을 남겼습니다.
+    모든 케이스에 같은 힘을 쓰는 대신, 결함이 모일 곳을 골라 끝까지 파기 위해서입니다.<br>
+    그리고 발견한 문제는 로그와 데이터로 <b>근본 원인까지 추적</b>해,
+    기획도 개발도 <b>같은 지표를 믿고 결정</b>할 수 있게 만듭니다.
+  </p>
+
+  <div class="ci-label">CASE INDEX — 클릭하면 상세로 이동합니다</div>
+  <div class="case-index">
+    <a class="ci-card" href="#case1">
+      <span class="ci-tag">CASE 01 · G마켓 · 원칙 ①②</span>
+      <b>−70%</b>
+      <span class="ci-title">PV 이상 트래픽 근본 원인 규명 · 필터링 정책</span>
+    </a>
+    <a class="ci-card" href="#case2">
+      <span class="ci-tag">CASE 02 · 카사코리아 · 원칙 ①②</span>
+      <b style="font-size:20px; padding-top:5px">1인 QA</b>
+      <span class="ci-title">금융 핵심 로직 검증 체계 — 0에서 구축</span>
+    </a>
+    <a class="ci-card" href="#case3">
+      <span class="ci-tag">CASE 03 · 카사코리아 · 원칙 ①</span>
+      <b>−30–60분<em>/일</em></b>
+      <span class="ci-title">데일리 모니터링 자동화</span>
+    </a>
+  </div>
+</div>
+
+<section id="strengths">
+  <div class="wrap">
+    <div class="sec-head"><span class="no">01</span><h2>핵심 역량</h2></div>
+    <div class="pr-label">원칙 ① 힘의 배분 <span>— 결함이 모일 곳을 가려내고, 고른 곳은 끝까지</span></div>
+    <div class="strengths">
+      <div class="strength"><span class="no">A</span><div><b>핵심 로직 집중 검증</b><span>청약·매수·매도·세금 등 리스크 높은 금융 로직의 테스트 시나리오 설계·리딩</span></div></div>
+      <div class="strength"><span class="no">B</span><div><b>테스트 자동화</b><span>ROI 관점으로 자동화 대상 TC를 선별하는 판단 — Appium 기반 회귀·모니터링 자동화</span></div></div>
+      <div class="strength"><span class="no">C</span><div><b>데이터 기반 원인 추적</b><span>Databricks 로그·DB 데이터로 이상 패턴의 재현 조건과 근본 원인을 규명</span></div></div>
+    </div>
+    <div class="pr-label">원칙 ② 지표 정렬 <span>— 직군이 달라도, 같은 지표를 보게</span></div>
+    <div class="strengths">
+      <div class="strength"><span class="no">D</span><div><b>기획 단계 QA 참여</b><span>API 플로우 리뷰로 릴리즈 전 오류를 사전 차단 — 검증을 개발 이후가 아닌 기획 단계로</span></div></div>
+      <div class="strength"><span class="no">E</span><div><b>협업·이슈 관리</b><span>Jira 버그 관리, 외주 QE 티켓 유효성 검토, 담당 개발자 Assign — 이슈가 같은 언어로 흐르게</span></div></div>
+    </div>
+    <div class="strengths" style="margin-top:14px">
+      <div class="strength"><span class="no">F</span><div><b>도구</b><span>Databricks · DBeaver · Jira · Figma · Postman/PAW · Appium</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="career">
+  <div class="wrap">
+    <div class="sec-head"><span class="no">02</span><h2>경력 — 맡은 일과 풀어낸 문제</h2></div>
+    <p class="sec-sub">회사별로 담당 업무를 먼저, 그 업무 속에서 직접 발견하고 해결한 케이스를 이어서 정리했습니다.</p>
+
+    <!-- ═══════ G마켓 ═══════ -->
+    <div class="co">
+      <div class="when">
+        <span class="period">2026.03 —</span>
+        <span class="len">재직중</span>
+        <span class="status">CURRENT</span>
+      </div>
+      <div class="body">
+        <h3>G마켓 · QA / 데이터</h3>
+        <div class="co-sub">대형 이커머스 홈/Browsing · 리드커리어 파견 (계약직)</div>
+        <div class="duty-chips">
+          <span class="chip hl">QA</span><span class="chip hl">Data 모니터링</span><span class="chip">운영 지원</span>
+        </div>
+        <ul class="duties">
+          <li>홈 화면 변경·신규 기능 전반 QA — TC 작성, 기능/회귀 테스트</li>
+          <li>외주 QE 버그 티켓 유효성 검토·담당 개발자 Assign 등 Jira 이슈 관리</li>
+          <li>데이터 대시보드 유지보수·PV 이상치 모니터링, KPI 정의·데이터 분석 지원</li>
+          <li>신규 섹션 위치 변경 실험에서 <b>전후 지표 검증과 롤백 조건 설계</b>에 참여 — 변경의 안전성을 데이터로 확인</li>
+        </ul>
+
+        <!-- CASE 01 -->
+        <div class="case" id="case1">
+          <span class="tag">CASE 01 · DATA 모니터링 중 발견</span>
+          <h4>모바일 앱 PV 이상 트래픽 근본 원인 규명 · 필터링 정책</h4>
+          <div class="oneliner">다들 좋은 신호로 지나친 PV 급증을 오류로 의심해, 재현 조건을 로그로 규명하고 방어책까지 설계한 사례</div>
+
+          <div class="step">
+            <span class="k">PROBLEM</span>
+            <p>
+              Home 특정 섹션의 PV가 <b>전 기간 대비 이상하게 높게</b> 집계되고 있었습니다.
+              먼저 눈치챈 사람들도 있었지만, 지표가 오르는 모양새였기에 파고든 사람은 없었습니다.
+              저는 <b>"좋은 시그널이 아니라 오류"라는 가설</b>을 세우고 Databricks 로그를 직접 분석했고,
+              PV가 <b>1초 미만 간격으로 반복</b>되는 패턴을 찾아냈습니다. 특정 <code>channel_code</code>에
+              집중되어 있었고, 유저 1인당 PV가 <b>20–30회</b>까지 발생하고 있었습니다.
+            </p>
+          </div>
+
+          <div class="step">
+            <span class="k">HYPOTHESES → VERIFIED</span>
+            <div class="hypo">
+              <div class="hit"><b>H1 · 확인됨</b>잠금화면 상태에서도 PV 발생 — <code>lockscreen=true</code>인데 <code>attached=true</code>인 엣지 케이스의 재현 조건을 규명</div>
+              <div><b>H2</b>애드웨어·비정상 자동 실행 가능성</div>
+              <div><b>H3</b>앱 크래시 루프에 의한 반복 실행 가능성</div>
+            </div>
+          </div>
+
+          <div class="step">
+            <span class="k">DECISION — 데이터팀 · 안드로이드 개발자 협업</span>
+            <ul>
+              <li>기존 로그로는 화면 꺼짐 상태를 구분할 수 없어, 안드로이드 개발자와 함께 <code>screenoff</code> 필드를 신설</li>
+              <li>데이터팀과 적재 기준을 합의 — <code>screenoff</code> 상태에서 1초에 3–4회 이상 찍히는 PV는 <b>적재 단계에서 제외</b></li>
+              <li><code>lockscreen=true</code> 상태의 PV 제외 — 기본 필터</li>
+              <li>앱 크래시 반복 루프에 Safeguard 적용 — 확인 시 프로세스 종료</li>
+            </ul>
+            <p class="muted" style="font-size:13.5px">
+              정상 푸시 진입 유저 일부가 제외될 가능성보다 <b>노이즈 제거 효과가 크다고 판단</b>해 정책 적용을 제안했습니다.
+            </p>
+          </div>
+
+          <div class="result">
+            <div class="big">−70%</div>
+            <p>이상치 데이터 감소. 증상 대응이 아니라 <b>재현 조건 규명에 기반한 방어</b> — 기획도 개발도 같은 숫자를 믿고 결정할 수 있게 지표 신뢰도를 회복했습니다.</p>
+            <div class="bars-wrap">
+              <div class="bars">
+                <div class="bar before"><span>100</span><em>필터링 전</em></div>
+                <div class="bar after"><span>30</span><em>필터링 후</em></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════ 카사코리아 ═══════ -->
+    <div class="co">
+      <div class="when">
+        <span class="period">2022.07 — 2023.12</span>
+        <span class="len">1년 6개월</span>
+      </div>
+      <div class="body">
+        <h3>카사코리아 · 자사 1인 QA / 대리</h3>
+        <div class="co-sub">핀테크 · 부동산 조각투자 플랫폼 web/app</div>
+        <div class="duty-chips">
+          <span class="chip hl">자사 1인 QA</span><span class="chip hl">금융 로직 검증</span><span class="chip hl">테스트 자동화</span>
+        </div>
+        <ul class="duties">
+          <li>백엔드 6 · AOS 2 · iOS 2 · 디자인 1 · PO 1, 그리고 <b>QA는 1명</b> — 플랫폼 전체 품질을 혼자 담당</li>
+          <li>기획자 공백기에 기획 일부를 직접 수행 — 검증 대상의 의도를 이해하는 시야</li>
+          <li>사내 테스트 자동화 툴(testproject) 세미나 진행 — 자동화 경험을 팀의 자산으로</li>
+        </ul>
+
+        <!-- CASE 02 -->
+        <div class="case" id="case2">
+          <span class="tag g">CASE 02 · 0에서 만든 검증 체계</span>
+          <h4>1인 QA — 금융 핵심 로직 검증 체계 구축</h4>
+          <div class="oneliner">돈이 오가는 플랫폼의 품질을 혼자 책임져야 할 때 — 결함이 모일 곳부터 검증을 쌓은 사례</div>
+
+          <div class="step">
+            <span class="k">PROBLEM</span>
+            <p>
+              부동산 조각투자 플랫폼의 QA는 <b>저 한 명</b>이었습니다. 청약·매수·매도·세금 계산 —
+              돈이 직접 오가는 로직은 결함 하나가 곧 금전 사고입니다. 모든 화면을 같은 깊이로
+              검증할 수는 없었고, <b>변수가 모이는 금융 로직에 힘을 집중</b>하는 체계가 필요했습니다.
+            </p>
+          </div>
+
+          <div class="step">
+            <span class="k">APPROACH</span>
+            <ul>
+              <li><b>검증을 기획 단계로 앞당김</b> — API 플로우 설계 리뷰에 QA로 참여해 오류를 릴리즈 전이 아니라 <b>개발 전에 차단</b></li>
+              <li>Figma 기반 TC/시나리오 작성으로 릴리즈 전 결함률 감소</li>
+              <li>청약/매수/매도/세금 계산 등 <b>금융 핵심 로직의 시나리오를 설계·리딩</b> — 변수 조합이 많은 로직일수록 깊게</li>
+              <li>화면만 믿지 않고 <b>데이터로 이중 확인</b> — Postman/PAW로 API 응답, DBeaver로 회원 상태·거래 데이터 직접 검증</li>
+            </ul>
+          </div>
+
+          <div class="result">
+            <div class="big" style="font-size:26px">기획 리뷰 → 데이터 검증</div>
+            <p>혼자라서 만든 것이 아니라, 혼자여서 <b>더 정확히 골라야 했던</b> 검증 체계 — 기획 단계 리뷰부터 DB 검증까지 0에서 쌓았습니다.</p>
+          </div>
+        </div>
+
+        <!-- CASE 03 -->
+        <div class="case" id="case3">
+          <span class="tag g">CASE 03 · 반복 업무에서 발견</span>
+          <h4>데일리 모니터링 자동화 — 1인 QA의 레버리지</h4>
+          <div class="oneliner">1인 QA가 모든 걸 지킬 수 없을 때 — 지킬 곳을 고르고, 나머지는 기계에 맡긴 사례</div>
+
+          <div class="step">
+            <span class="k">PROBLEM → DECISION</span>
+            <p>
+              서비스 신뢰성을 위해 매일 아침 30분–1시간의 수기 모니터링이 필요했습니다.
+              1인 QA로서 모든 것을 자동화할 수도, 모든 것을 지킬 수도 없었고 —
+              이 제약이 오히려 <b>힘의 배분 기준(ROI)</b>을 세우게 했습니다. 회귀 TC 중
+              <b>ROI 관점에서 모니터링 케이스를 선별</b>해 Appium 자동화를 구축하고
+              거래 시간대에는 상시 실행되도록 운영했습니다.
+            </p>
+          </div>
+
+          <div class="result">
+            <div class="big">30–60분<span style="font-size:15px; color:var(--muted); font-weight:400">/일</span></div>
+            <p>반복 공수 절감 + 거래 시간 중 이슈 조기 검출 안전망. 확보한 시간은 금융 핵심 로직 검증에 재투자 — <b>뺀 힘을 리스크가 모이는 곳에 다시 쏟았습니다</b>.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════ 큐드 ═══════ -->
+    <div class="co">
+      <div class="when">
+        <span class="period">2018.12 — 2021.03</span>
+        <span class="len">2년 4개월</span>
+      </div>
+      <div class="body">
+        <h3>LG Signage · 호텔TV SW 검증 <span style="font-weight:500; font-size:14px; color:var(--muted)">— 큐드 · 주임</span></h3>
+        <div class="co-sub">SI 외주 QA</div>
+        <ul class="duties">
+          <li>Signage webOS 기본 기능 검증, LG 자사 앱 연동/제어 검증 (SuperSign CMS·Control·White Balance 등)</li>
+          <li>Cisco·Poly·Neat 등 외부 기기 연동 테스트, 국가별 호텔TV 사양 분기 테스트</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ═══════ 와이즈스톤 ═══════ -->
+    <div class="co">
+      <div class="when">
+        <span class="period">2016.12 — 2018.06</span>
+        <span class="len">1년 7개월</span>
+      </div>
+      <div class="body">
+        <h3>LG Signage 검증 <span style="font-weight:500; font-size:14px; color:var(--muted)">— 와이즈스톤 · 연구원</span></h3>
+        <div class="co-sub">SI 외주 QA</div>
+        <ul class="duties">
+          <li>Signage webOS 기본 기능 검증 (화면·소리·YouTube·web Browser 등)</li>
+          <li>LG 자사 앱 연동/제어 검증, 외부 기기(화상회의 장비·삼성·애플·그래픽카드) 연동 테스트</li>
+        </ul>
+        <p class="muted" style="font-size:13.5px; margin-top:14px; max-width:640px">
+          SI에서의 외주 QA와 카사코리아에서의 자사 QA를 모두 경험했습니다.
+          갖춰진 프로세스 안에서의 검증과, 0에서 검증 체계를 만드는 일 — 양쪽의 시야를 갖고 있습니다.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="transition">
+  <div class="wrap">
+    <div class="sec-head"><span class="no">03</span><h2>전환기 (2024 – 2025)</h2></div>
+    <div class="qa-block">
+      <div class="q">Q. 2년의 공백이 있네요?</div>
+      <p>
+        좋아하던 반려동물 분야에 제대로 도전한 시간이었습니다. 애견미용사 3급(2024.12)과
+        2급(2025.08)을 취득하고 미용실 인턴으로 실무까지 경험했습니다.
+      </p>
+      <p>
+        그 과정에서 확인한 것은 오히려 저의 방향이었습니다. 혼자 완결하는 일보다
+        여러 직군과 협업해 <b>품질을 함께 만들어가는 일</b>에서 더 큰 즐거움을 느꼈고,
+        병행한 AI 스타트업(메이아이)에서 공간 라벨링의 데이터 구조를 설계하며 데이터·검증 감각을 이어갔습니다.
+      </p>
+      <p>
+        낯선 도메인을 빠르게 학습해 목표한 자격을 실행으로 옮긴 경험은,
+        <b>낯선 제품·도메인도 빠르게 검증 체계로 만드는 QA의 힘</b>과 맞닿아 있습니다.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section id="creds">
+  <div class="wrap">
+    <div class="sec-head"><span class="no">04</span><h2>자격 · 교육 · 스킬</h2></div>
+    <div class="creds">
+      <div class="cred">
+        <h4>CERTIFICATES</h4>
+        <ul>
+          <li>애견미용사 2급 <small>한국애견미용인협회 · 2025.08</small></li>
+          <li>애견미용사 3급 <small>한국애견미용인협회 · 2024.12</small></li>
+          <li>반려동물식품관리사 <small>2019.11</small></li>
+        </ul>
+      </div>
+      <div class="cred">
+        <h4>ACTIVITIES</h4>
+        <ul>
+          <li>테스트 자동화 툴(testproject) 세미나 진행</li>
+          <li>한국경영인재연수원 리더십 교육</li>
+        </ul>
+      </div>
+      <div class="cred">
+        <h4>TOOLS &amp; TECH</h4>
+        <div class="chips">
+          <span class="chip">Databricks</span><span class="chip">DBeaver</span><span class="chip">Jira</span>
+          <span class="chip">Figma</span><span class="chip">Postman / PAW</span><span class="chip">Appium</span>
+          <span class="chip">HTML·CSS·JS</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="wrap">
+    <div class="big-msg">결함이 모일 곳을 먼저 보는 QA는,<br>검증을 넘어 방향을 제안합니다.</div>
+    <p class="muted" style="font-size:14px; max-width:560px">
+      힘을 쏟을 곳을 고르는 것, 그리고 팀이 같은 지표를 보게 만드는 것 — 5년의 검증이 가르쳐준 방식입니다.
+    </p>
+    <div class="contact">
+      <a href="mailto:dud2816@naver.com">dud2816@naver.com</a>
+    </div>
+    <div class="fine">© 2026 KIM GWIYOUNG · 차트의 지표는 내부 데이터 보호를 위해 상대지수·재구성 예시로 표기했습니다.</div>
+  </div>
+</footer>
+</body>
+</html>
